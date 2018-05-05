@@ -1,0 +1,21 @@
+// Stub code to copy into Spark Shell
+
+import scala.xml._
+
+// Given a string containing XML, parse the string, and 
+// return an iterator of activation XML records (Nodes) contained in the string
+
+def getactivations(xmlstring: String): Iterator[Node] = {
+    val nodes = XML.loadString(xmlstring) \\ "activation"
+    nodes.toIterator
+}
+
+// Given an activation record (XML Node), return the model name
+def getmodel(activation: Node): String = {
+   (activation \ "model").text
+}
+
+// Given an activation record (XML Node), return the account number
+def getaccount(activation: Node): String = {
+   (activation \ "account-number").text
+}

@@ -1,0 +1,18 @@
+# Stub code to copy into Spark Shell
+
+import xml.etree.ElementTree as ElementTree
+
+# Given a string containing XML, parse the string, and 
+# return an iterator of activation XML records (Elements) contained in the string
+
+def getactivations(s):
+    filetree = ElementTree.fromstring(s)
+    return filetree.getiterator('activation')
+    
+# Given an activation record (XML Element), return the model name
+def getmodel(activation):
+    return activation.find('model').text 
+
+# Given an activation record (XML Element), return the account number 
+def getaccount(activation):
+    return activation.find('account-number').text 
